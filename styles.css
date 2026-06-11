@@ -118,7 +118,23 @@ h1,h2,h3{font-weight:400}
 .partners .lead{
   font-family:var(--inter);font-weight:500;font-size:14px;color:#fff;margin-bottom:24px;
 }
-.partners img{width:100%;height:auto;opacity:.9}
+.partner-row{display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap}
+.client-logos{display:flex;align-items:center;gap:36px;flex-wrap:wrap}
+/* logos trimmed of padding and normalized to one height so they read at equal size */
+.logo-cell{display:inline-flex;align-items:center;flex:0 0 auto}
+.logo-cell img{
+  height:34px;width:auto;object-fit:contain;
+  filter:grayscale(1) brightness(0) invert(1);
+  opacity:.62;transition:opacity .2s ease;
+}
+.logo-cell.sm img{height:27px}
+.logo-cell img:hover{opacity:1}
+.ratings{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+.rating{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--t-muted);white-space:nowrap;
+}
+.rating .stars{color:#eaeaea;letter-spacing:1.5px;font-size:11px}
 
 /* ============================== SECTION HELPERS ============================== */
 section{position:relative}
