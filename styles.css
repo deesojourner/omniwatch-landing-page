@@ -304,31 +304,128 @@ section{position:relative}
 .reveal.in{opacity:1;transform:none}
 
 /* ============================== RESPONSIVE ============================== */
+/* ---------- Tablet (<= 1100px) ---------- */
 @media(max-width:1100px){
-  .hero-device{opacity:.75}
+  .hero-device{opacity:.7}
+  .hero-copy h1{font-size:clamp(40px,5vw,52px)}
   .split-inner,.split.rev .split-inner{grid-template-columns:1fr;gap:40px}
   .split.rev .split-text,.split.rev .split-media{order:initial}
   .trust-top{grid-template-columns:1fr;gap:28px}
-  .cols4{grid-template-columns:1fr 1fr;padding-bottom:0}
+  .cols4{grid-template-columns:1fr 1fr;gap:48px;padding-bottom:0}
   .cols4::after,.tab-indicator{display:none}
+  .col4 h3{min-height:auto}
   .platform .col4:not(.active){opacity:1}
   .platform .col4.active p{color:var(--t-dim)}
   .footer-grid{grid-template-columns:1fr 1fr}
+  /* rein in the oversized desktop section spacing */
+  .center-head{padding:120px 0 0}
+  .features{padding:96px 0 0}
+  .delivers{padding:120px 0 0}
+  .dashboard{padding:80px 0 0}
+  .platform{padding:130px 0}
+  .split{padding:90px 0 0}
+  .split.split-lead{padding-top:110px}
+  .impact{padding:30px 0 0}
+  .trust{padding:120px 0 0}
+  .footer{margin-top:120px}
+  .copyright{text-align:left}
 }
+
+/* ---------- Mobile (<= 860px) ---------- */
 @media(max-width:860px){
-  .nav-links{display:none;position:absolute;top:88px;left:0;right:0;flex-direction:column;
+  :root{--maxw:100%}
+  .wrap{padding:0 20px}
+
+  /* nav */
+  .nav{padding:36px 20px 18px}
+  .nav-links{display:none;position:absolute;top:96px;left:0;right:0;flex-direction:column;
     background:#0a0a0a;border-top:1px solid #1c1c1c;padding:24px;gap:20px;align-items:center}
   .nav-links.open{display:flex}
-  .nav-toggle{display:block}
+  .nav-toggle{display:block;margin-left:auto}
   .nav .btn{display:none}
+
+  /* hero — height auto, partner strip flows normally instead of overlapping */
+  .hero{min-height:auto;overflow:visible}
+  .hero-inner{padding:0 20px}
+  .hero-grid{padding-top:128px;padding-bottom:0;gap:0}
   .hero-device{display:none}
-  .feature-grid{grid-template-columns:1fr}
-  .display,.delivers h2,.center-head h2{font-size:34px}
-  .impact-text h2{font-size:34px}
-  .impact-planet{position:relative;right:auto;top:auto;transform:none;width:100%;margin-top:30px}
-  .impact-inner{flex-direction:column;align-items:flex-start}
-  .cols4{grid-template-columns:1fr}
-  .trust-bottom{grid-template-columns:1fr}
-  .fcard{flex-direction:column;text-align:center}
-  .footer-grid{grid-template-columns:1fr}
+  .hero-copy{flex:1 1 100%;max-width:none}
+  .hero-copy h1{font-size:34px;line-height:1.18}
+  .hero-copy p.sub{font-size:16px;max-width:none}
+  .partners{position:static;margin-top:56px}
+  .partner-row{flex-direction:column;align-items:flex-start;gap:22px}
+  .client-logos{gap:20px 26px}
+  .logo-cell img{height:30px}      /* normal logos */
+  .logo-cell.sm img{height:21px}   /* wide wordmarks */
+
+  /* stack button groups, keep natural width (no overlap) */
+  .hero-actions,.delivers .actions,.impact .actions{flex-direction:column;align-items:flex-start;gap:14px}
+
+  /* section spacing */
+  .center-head{padding:108px 0 0}
+  .center-head h2{font-size:30px}
+  .center-head p{font-size:16px}
+  .features{padding:56px 0 0}
+  .delivers{padding:120px 0 0}
+  .delivers h2{font-size:30px}
+  .delivers p.body{font-size:16px}
+  .dashboard{padding:56px 0 0}
+  .platform{padding:120px 0 80px}
+  .split{padding:72px 0 0}
+  .split.split-lead{padding-top:80px}
+  .split-text h2{font-size:28px}
+  .split-text p{font-size:15px}
+  .impact{padding:48px 0 0}
+  .trust{padding:80px 0 0}
+  .footer{margin-top:80px}
+
+  /* feature cards */
+  .feature-grid{grid-template-columns:1fr;gap:20px}
+  .fcard{flex-direction:column;text-align:center;min-height:auto;gap:6px;padding:28px 22px}
+  .fcard-art{flex:0 0 auto;padding:0}
+  .fcard-art img{max-height:210px}
+  .fcard-body{max-width:340px}
+
+  /* dashboard — scroll horizontally at a legible size */
+  .dashboard .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:10px}
+  .dashboard img{min-width:720px}
+
+  /* platform columns — each row becomes a softly bordered card, clearly separated */
+  .cols4{grid-template-columns:1fr;gap:18px}
+  .col4{
+    border:1px solid rgba(255,255,255,.1);border-radius:14px;
+    padding:26px 22px;background:rgba(255,255,255,.015);
+  }
+  .col4 h3{min-height:auto}
+  .col4 p{margin-bottom:18px}
+  .col4 a.disc{margin-top:0}
+
+  /* splits */
+  .split-inner,.split.rev .split-inner{grid-template-columns:1fr;gap:28px}
+
+  /* impact */
+  .impact-text h2{font-size:30px}
+  .impact-text p{font-size:17px}
+  .impact-inner{flex-direction:column;align-items:flex-start;min-height:auto}
+  .impact-planet{position:relative;right:auto;top:auto;transform:none;width:100%;max-width:380px;margin:28px auto 0}
+
+  /* trust */
+  .trust-top{grid-template-columns:1fr;gap:24px;padding:28px}
+  .trust-top h3{font-size:19px}
+  .trust-bottom{grid-template-columns:1fr;gap:20px}
+  .tcard-art{min-height:auto;padding:26px 24px 0}
+  .tcard-body{padding:18px 24px 30px}
+
+  /* footer */
+  .footer-grid{grid-template-columns:1fr;gap:36px}
+  .foot-tag{max-width:none}
+  .copyright{padding:0 20px}
+}
+
+/* ---------- Small phones (<= 430px) ---------- */
+@media(max-width:430px){
+  .hero-copy h1{font-size:45px}
+  .center-head h2,.delivers h2,.impact-text h2{font-size:26px}
+  .split-text h2{font-size:24px}
+  .btn{padding:11px 24px;font-size:15px}
 }
