@@ -9,6 +9,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Cache-busting: rewrite every ?v=... asset query to this commit's short SHA
+      # so a fresh CSS/JS is fetched on each deploy (defeats the 7-day Cloudflare cache).
+      - name: Bump asset versions
+        run: |
+          BUILD_ID="${GITHUB_SHA::8}"
+          sed -i -E "s/\?v=[A-Za-z0-9._-]+/?v=${BUILD_ID}/g" index.html
+          echo "Asset version set to ${BUILD_ID}"
+
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
@@ -17,3 +25,8 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
           server-dir: /omniwatch.indepthearth.com/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/*_screenshot.png
